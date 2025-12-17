@@ -22,20 +22,6 @@ public class Main {
       return  prev;
     }
 
-    public  static  ListNode reverseBetween(ListNode head){
-        ListNode temp=head;
-        ListNode prev=null;
-
-        while(temp!=null){
-            ListNode curr=temp.next;
-            temp.next=prev;
-            prev=temp;
-            temp=curr;
-
-        }
-        return  prev;
-    }
-
     public  static  void printlinkedList(ListNode head){
         while(head!=null){
             System.out.print(head.value +"->");
