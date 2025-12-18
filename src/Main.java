@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 class ListNode {
     int value;
     ListNode next;
@@ -74,6 +76,55 @@ public class Main {
 
         return prev;
     }
+    public  static  ListNode rotateRight(ListNode head, int k) {
+
+//        logic and idea
+
+//        Traverse linked list → copy values into ArrayList
+//
+//        Rotate array to the right by k
+//
+//        First take last k elements
+//
+//        Then take first n - k elements
+//
+//        Rebuild linked list
+        if (head == null) return null;
+
+        ArrayList<Integer> arr = new ArrayList<>();
+        ListNode curr = head;
+
+        while (curr != null) {
+            arr.add(curr.value);
+            curr = curr.next;
+        }
+
+        int n = arr.size();
+        k = k % n;
+
+        ArrayList<Integer> res = new ArrayList<>();
+
+        // last k elements
+        for (int i = n - k; i < n; i++) {
+            res.add(arr.get(i));
+        }
+
+        // first n-k elements
+        for (int i = 0; i < n - k; i++) {
+            res.add(arr.get(i));
+        }
+
+        // rebuild list
+        curr = head;
+        int i = 0;
+        while (curr != null) {
+            curr.value = res.get(i++);
+            curr = curr.next;
+        }
+
+        return head;
+    }
+
     public  static  void printlinkedList(ListNode head){
         while(head!=null){
             System.out.print(head.value +"->");
@@ -97,7 +148,9 @@ public class Main {
 
 //     head=reverseBetween(head,2,3);
 //     printlinkedList(head);
-     head=reverseKGroup(head,2);
+//     head=reverseKGroup(head,2);
+//     printlinkedList(head);
+     head=rotateRight(head,2);
      printlinkedList(head);
     }
 }
