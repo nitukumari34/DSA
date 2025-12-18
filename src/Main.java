@@ -148,6 +148,7 @@ public class Main {
 
 //     head=reverseBetween(head,2,3);
 //     printlinkedList(head);
+     head=reverseKGroup(head,2);
 //     head=reverseKGroup(head,2);
 //     printlinkedList(head);
      head=rotateRight(head,2);
